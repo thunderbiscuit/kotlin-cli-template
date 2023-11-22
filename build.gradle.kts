@@ -1,6 +1,5 @@
 plugins {
-    id("org.jetbrains.kotlin.jvm") version "1.9.20"
-    id("org.gradle.application")
+    id("org.jetbrains.kotlin.multiplatform") version "1.9.20"
 }
 
 group = "me.tb"
@@ -10,16 +9,33 @@ repositories {
     mavenCentral()
 }
 
-dependencies {
-    implementation("com.github.ajalt.clikt:clikt:4.2.1")
-    implementation("com.github.ajalt.mordant:mordant:2.2.0")
-}
-
 kotlin {
-    jvmToolchain(17)
-}
+    // macOS M1 target configuration
+    macosArm64 {
+        binaries {
+            executable {
+                entryPoint = "me.tb.main"
+                baseName = "ks"
+            }
+        }
+    }
 
-application {
-    mainClass.set("me.tb.MainKt")
-    applicationName = "ks"
+    // linux x86_64 target configuration
+    linuxX64 {
+        binaries {
+            executable {
+                entryPoint = "me.tb.main"
+                baseName = "ks"
+            }
+        }
+    }
+
+    sourceSets {
+        val commonMain by getting {
+            dependencies {
+                implementation("com.github.ajalt.clikt:clikt:4.2.1")
+                implementation("com.github.ajalt.mordant:mordant:2.2.0")
+            }
+        }
+    }
 }

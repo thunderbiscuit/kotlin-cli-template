@@ -1,22 +1,22 @@
 # Readme
 This is a simple template to kickstart new Kotlin-based cli projects.
 
-It uses Clikt 4.2.1 and Kotlin 1.9.20, and produces a JVM-based cli.
+It uses Clikt 4.2.1 and Kotlin 1.9.20, and produces native or JVM command line tools.
 
-Build for testing and run using
+# Building and usage
+Build and run the final executable using
 ```shell
-./gradlew installDist
-./build/install/templatecliapp/bin/templatecliapp
+./gradlew linkReleaseExecutableMacosArm64
+./build/bin/macosArm64/releaseExecutable/ks.kexe
 ```
 
-Build and install to custom location using
+You can rename it and move it to a directory in your `$PATH` to make it easier to use.
 ```shell
-./gradlew distTar
-cd build/distributions
-tar --extract --verbose --file templatecliapp-0.1.0-SNAPSHOT.tar -C ~/targetdirectory/
+cd ./build/bin/macosArm64/releaseExecutable
+mv ks.kexe ks
 ```
 
-From there you can run the application using 
-```shell
-~/targetdirectory/templatecliapp-0.1.0-SNAPSHOT/bin/templatecliapp
-```
+## Building for JVM
+To build for the JVM target only, use the [`jvm-only`] branch.
+
+[`jvm-only`]: https://github.com/thunderbiscuit/kotlin-cli-template/tree/jvm-only
