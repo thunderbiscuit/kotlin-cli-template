@@ -1,6 +1,6 @@
 plugins {
-    kotlin("jvm") version "1.9.20"
-    application
+    id("org.jetbrains.kotlin.jvm") version "1.9.20"
+    id("org.gradle.application")
 }
 
 group = "me.tb"
@@ -12,6 +12,7 @@ repositories {
 
 dependencies {
     implementation("com.github.ajalt.clikt:clikt:4.2.1")
+    implementation("com.github.ajalt.mordant:mordant:2.2.0")
 }
 
 kotlin {
@@ -20,5 +21,5 @@ kotlin {
 
 application {
     mainClass.set("me.tb.MainKt")
-    applicationName = "templatecliapp"
+    applicationName = "ks"
 }

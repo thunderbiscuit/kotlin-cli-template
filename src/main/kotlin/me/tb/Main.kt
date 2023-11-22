@@ -1,21 +1,23 @@
 package me.tb
 
 import com.github.ajalt.clikt.core.CliktCommand
-import com.github.ajalt.clikt.parameters.options.default
-import com.github.ajalt.clikt.parameters.options.help
-import com.github.ajalt.clikt.parameters.options.option
-import com.github.ajalt.clikt.parameters.options.prompt
-import com.github.ajalt.clikt.parameters.types.int
+import com.github.ajalt.clikt.core.subcommands
+import me.tb.commands.Colors
+import me.tb.commands.Errors
+import me.tb.commands.Play
+import me.tb.commands.Scream
 
-fun main(args: Array<String>) = Hello().main(args)
+// The first command is the one that is run by default when the user calls the cli.
+// fun main(args: Array<String>) = KS().main(args)
 
-class Hello : CliktCommand() {
-    private val count: Int by option().int().default(1).help("Number of greetings")
-    private val name: String by option().prompt("Your name").help("The person to greet")
+// You can add subcommands to that initial command.
+fun main(args: Array<String>) = KS()
+    .subcommands(Colors(), Scream(), Errors(), Play())
+    .main(args)
 
-    override fun run() {
-        repeat(count) {
-            echo("Hello $name!")
-        }
-    }
+class KS : CliktCommand(help = "A sample Kotlin CLI tool") {
+    override fun run() = Unit
+    // override fun run() {
+    //     echo("Hello, World!")
+    // }
 }
