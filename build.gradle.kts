@@ -1,5 +1,5 @@
 plugins {
-    id("org.jetbrains.kotlin.jvm") version "1.9.20"
+    id("org.jetbrains.kotlin.jvm") version "2.1.10"
     id("org.gradle.application")
 }
 
@@ -11,8 +11,8 @@ repositories {
 }
 
 dependencies {
-    implementation("com.github.ajalt.clikt:clikt:4.2.1")
-    implementation("com.github.ajalt.mordant:mordant:2.2.0")
+    implementation("com.github.ajalt.clikt:clikt:5.0.3")
+    implementation("com.github.ajalt.mordant:mordant:3.0.1")
 }
 
 kotlin {
