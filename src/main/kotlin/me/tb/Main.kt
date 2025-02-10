@@ -1,11 +1,13 @@
 package me.tb
 
 import com.github.ajalt.clikt.core.CliktCommand
+import com.github.ajalt.clikt.core.Context
 import com.github.ajalt.clikt.core.subcommands
 import me.tb.commands.Colors
 import me.tb.commands.Errors
 import me.tb.commands.Play
 import me.tb.commands.Scream
+import com.github.ajalt.clikt.core.main
 
 // The first command is the one that is run by default when the user calls the cli.
 // fun main(args: Array<String>) = KS().main(args)
@@ -15,8 +17,11 @@ fun main(args: Array<String>) = KS()
     .subcommands(Colors(), Scream(), Errors(), Play())
     .main(args)
 
-class KS : CliktCommand(help = "A sample Kotlin CLI tool") {
+class KS : CliktCommand() {
     override fun run() = Unit
+
+    override fun help(context: Context): String = "A sample Kotlin CLI tool"
+
     // override fun run() {
     //     echo("Hello, World!")
     // }
