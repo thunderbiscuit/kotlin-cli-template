@@ -2,11 +2,11 @@
 
 This is a simple template to kickstart new Kotlin-based cli projects.
 
-It uses Clikt 4.2.1 and Kotlin 2.1.10, and produces native or JVM command line tools.
+It uses Clikt 5.0.3 and Kotlin 2.1.10, and produces a native executable (macOS or Linux) cli.
 
-# Building and usage
+## Building and usage
 
-Build and run the final executable using
+Build for testing and run using
 
 ```shell
 ./gradlew linkReleaseExecutableMacosArm64
