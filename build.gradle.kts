@@ -1,5 +1,5 @@
 plugins {
-    id("org.jetbrains.kotlin.multiplatform") version "1.9.20"
+    id("org.jetbrains.kotlin.multiplatform") version "2.1.10"
 }
 
 group = "me.tb"
