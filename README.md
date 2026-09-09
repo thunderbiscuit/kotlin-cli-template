@@ -9,13 +9,16 @@ It uses [Clikt], is built with the [Kotlin Toolchain], and produces a native exe
 The Kotlin Toolchain builds one executable per module, and a module targets a single operating system. The project is therefore split into three modules:
 
 ```
-project.yaml                  # lists the modules
-shared/                       # all the cli code (kmp/lib), plus the dependencies
+project.yaml                     # lists the modules
+app/                             # all the cli code (kmp/lib), plus the dependencies
   module.yaml
   src/me/tb/...
-ks-macos/module.yaml          # macos/app, links shared into ks-macos.kexe
-ks-linux/module.yaml          # linux/app, links shared into ks-linux.kexe
+platforms/
+  ks-macos/module.yaml           # macos/app, links app into ks-macos.kexe
+  ks-linux/module.yaml           # linux/app, links app into ks-linux.kexe
 ```
+
+Everything you'd normally edit is in `app`. The modules under `platforms` hold no code: each names a product type, depends on `app`, and points at its entry point. They exist only because a module builds for a single operating system, so shipping both macOS and Linux takes two of them.
 
 ## Building and usage
 
@@ -42,7 +45,7 @@ cp ./build/tasks/_ks-macos_linkMacosArm64Release/ks-macos.kexe ~/.local/bin/ks
 
 ## Renaming the cli
 
-The name of the executable comes from the module name (`ks-macos` → `ks-macos.kexe`); there is no `baseName` setting in the toolchain. To change it, rename the `ks-macos`/`ks-linux` directories and update `project.yaml`. The name shown in the help output comes from the Clikt command class (`KS` in `shared/src/me/tb/Main.kt`).
+The name of the executable comes from the module name (`ks-macos` → `ks-macos.kexe`); there is no `baseName` setting in the toolchain. To change it, rename the `platforms/ks-macos` and `platforms/ks-linux` directories and update `project.yaml`. The name shown in the help output comes from the Clikt command class (`KS` in `app/src/me/tb/Main.kt`).
 
 ## Building for JVM
 

@@ -1,4 +1,4 @@
 modules:
-  - ks-linux
-  - ks-macos
-  - shared
+  - app
+  - platforms/ks-linux
+  - platforms/ks-macos
