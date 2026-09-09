@@ -1,0 +1,9 @@
+# All the actual CLI code lives here. The platform-specific modules
+# (ks-macos, ks-linux) are thin wrappers that link it into an executable.
+product:
+  type: kmp/lib
+  platforms: [macosArm64, linuxX64]
+
+dependencies:
+    - com.github.ajalt.clikt:clikt:5.1.0
+    - com.github.ajalt.mordant:mordant:3.1.0

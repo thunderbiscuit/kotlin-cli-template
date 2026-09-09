@@ -1,0 +1,4 @@
+modules:
+  - ks-linux
+  - ks-macos
+  - shared

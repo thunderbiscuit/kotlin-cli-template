@@ -1,0 +1,10 @@
+product:
+  type: linux/app
+  platforms: [linuxX64]
+
+dependencies:
+  - ../shared
+
+settings:
+  native:
+    entryPoint: me.tb.main
